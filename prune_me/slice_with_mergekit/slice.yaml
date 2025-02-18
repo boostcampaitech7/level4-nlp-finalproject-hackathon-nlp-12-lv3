@@ -1,0 +1,16 @@
+base_model:
+  model: meta-llama/Llama-3.2-1B-Instruct
+
+slices:
+  - sources:
+      - model: meta-llama/Llama-3.2-1B-Instruct
+        layer_range: [0,18]
+  - sources:
+      - model: meta-llama/Llama-3.2-3B-Instruct
+        layer_range: [29,-1]  # -1은 마지막 레이어까지 포함
+      
+merge_method: breadcrumbs_ties
+dtype: bfloat16
+
+parameters:
+  weight: 1.0
